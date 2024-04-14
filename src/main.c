@@ -56,7 +56,7 @@ uint8_t blinky_test_program_bin[] = {
 // address need not be page aligned, only program_buffer_size worth of data will be written, the rest will
 // be left untouched.
 // program_buffer_size needs to be a multiple of 2
-void write_program_pages(const uint32_t address, uint8_t *program_buffer, const uint32_t program_buffer_size) {
+void insert_user_code(const uint32_t address, uint8_t *program_buffer, const uint32_t program_buffer_size) {
     // Disable interrupts.
     uint8_t  sreg_last_state = SREG;
     cli();
@@ -121,8 +121,8 @@ int main(void)
     }
 
     // Write the binary code of the blinky program to flash memory at address 0x0000
-    write_program_pages(0x00000, blinky_test_program_bin1, sizeof(blinky_test_program_bin1));
-    write_program_pages(
+    insert_user_code(0x00000, blinky_test_program_bin1, sizeof(blinky_test_program_bin1));
+    insert_user_code(
       0x00000 + sizeof(blinky_test_program_bin1), 
       blinky_test_program_bin2, 
       sizeof(blinky_test_program_bin2));
