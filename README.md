@@ -1,4 +1,4 @@
-# uno-self-modify
+# avr-self-modify
 
 Uno-self-modify is a bootloader than modifies injects code into user space and executes it, returning back to the bootloader afterwards.
 
